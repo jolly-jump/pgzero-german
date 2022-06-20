@@ -1,7 +1,7 @@
 Von Scratch zu Pygame Zero
 ==========================
 
-In diesem Tutorial wird eine Implementierung des Spiels Flappy Bird in Scratch und Pygame Zero gegenübergestellt. So soll gezeigt werden, dass die Implmentierung in Pygame Zero sehr ähnlich zu der in Scratch ist und der Übergang von Scratch zu Pygame Zero daher sehr einfach ist.
+In diesem Tutorial wird eine Implementierung des Spiels Flappy Bird in Scratch und Pygame Zero gegenübergestellt. So soll gezeigt werden, dass die Implementierung in Pygame Zero sehr ähnlich zu der in Scratch ist und der Übergang von Scratch zu Pygame Zero daher sehr einfach ist.
 
 Die `Pygame Zero Version`__ kann hier heruntergeladen werden.
 
@@ -39,8 +39,8 @@ Danach zeichnen wir diese in unserem Fenster::
 Bewegung der Rohre
 ------------------
 
-Die Rohre bewegen sich in konstanter Geschwindigkeit zufällig nach oben und unten.
-Wenn sie links aus dem Fenster verschwinden, erscheinen sie rechts neu.
+Die Rohre bewegen sich mit konstanter Geschwindigkeit von rechts nach links.
+Wenn sie links aus dem Fenster verschwinden, erscheinen sie rechts neu mit zufälliger vertikaler Position.
 
 In der Scratch Version werden dazu zwei Skripte (je eines pro Rohr) erzeugt:
 
@@ -94,7 +94,7 @@ Der Vogel
 Ähnlich wie bei der Bewegung der Rohre funktioniert auch die Bewegung des Vogels.
 
 Um die Bewegung des Vogels zu aktualisieren, wird eine neue Funktion ``update_bird()`` benutzt.
-Dabei wird als realisiert, dass sich der Vogel gemäß der Schwerkraft bewegt (d.h. dass er nach unten fällt)::
+Diese realisiert zunächst, dass sich der Vogel gemäß der Schwerkraft bewegt (d.h. dass er nach unten fällt)::
 
    GRAVITY = 0.3
 
@@ -139,7 +139,7 @@ Nun soll überprüft werden, ob der Vogel eines der Rohre berührt::
            bird.dead = True
            bird.image = 'birddead'
 
-Ist dies der Fall, soll die Variable ``dead`` auf ``True`` gesetzt werden (d.h. der Vogel ist tot und das Spiel somit beendet) und das Bild geändert werden.
+Ist dies der Fall, soll die Variable ``bird.dead`` auf ``True`` gesetzt werden (d.h. der Vogel ist tot und das Spiel somit beendet) und das Bild geändert werden.
 
 Am Ende soll noch überprüft werden, ob der Vogel auf den Boden gefallen ist. Falls ja, soll er wieder
 in die Startposition gebracht werden. Zudem sollen die Rohre neu gesetzt werden::
@@ -150,10 +150,10 @@ in die Startposition gebracht werden. Zudem sollen die Rohre neu gesetzt werden:
            bird.vy = 0
            reset_pipes()
 
-Damit all diese Änderungen auch regelmäßig aufgerufen werden, rufen iese Funktionen in der Funktion ``update()`` auf::
+Damit all diese Änderungen auch regelmäßig aufgerufen werden, fügen wir sie in der Funktion ``update()`` hinzu::
 
    def update():
-      update_walls()
+      update_pipes()
       update_bird()
 
 Um jetzt auf Tastatur- bzw. Mauseingaben zu reagieren, definieren wir noch die Funktion ``on_key_down()``.::
