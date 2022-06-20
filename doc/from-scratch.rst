@@ -5,7 +5,7 @@ In diesem Tutorial wird eine Implementierung des Spiels Flappy Bird in Scratch u
 
 Die `Pygame Zero Version`__ kann hier heruntergeladen werden.
 
-.. __: https://github.com/lordmauve/pgzero/blob/master/examples/flappybird/flappybird.py
+.. __: https://github.com/lordmauve/pgzero/blob/1.2/examples/flappybird/flappybird.py
 Auch die `Scratch Version`__ gibt es zum Download.
 
 .. __: https://github.com/lordmauve/pgzero/raw/master/examples/flappybird/Flappy%20Bird.sb
